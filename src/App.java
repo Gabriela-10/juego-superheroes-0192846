@@ -152,7 +152,7 @@ public class App {
     private static final int VELOCIDAD_HEROE = 15;
     private static final int VIDA_HEROE = 100;
 
-    private static final String NOMBRE_VILLANO = "Doctor Bug";
+    private static final String NOMBRE_VILLANO = "Doctor Doom";
     private static final int FUERZA_VILLANO = 18;
     private static final int VELOCIDAD_VILLANO = 12;
     private static final int VIDA_VILLANO = 100;
