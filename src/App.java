@@ -57,6 +57,7 @@ abstract class Personaje {
         oponente.recibirDanio(danio);
     }
 
+    // Método para recibir daño, considerando si el personaje está defendiendo o no
     public void recibirDanio(int danio) {
         if (defendiendo) {
             danio -= danio * PORCENTAJE_PROTEGIDO / PORCENTAJE_TOTAL;
@@ -67,17 +68,20 @@ abstract class Personaje {
         System.out.println(nombre + " recibe " + danio + " de daño. Vida: " + vidaHp + "/" + vidaMaxima);
     }
 
+    // se defiende para reducir el daño del próximo ataque
     public void defender() {
         defendiendo = true;
         System.out.println(nombre + " se prepara para defenderse (protege el "
                 + PORCENTAJE_PROTEGIDO + "% del próximo daño).");
     }
 
+    //se cura 20 puntos de vida 
     public void recuperarse() {
         vidaHp = Math.min(vidaMaxima, vidaHp + CURACION_BASE);
         System.out.println(nombre + " se recupera. Vida: " + vidaHp + "/" + vidaMaxima);
     }
 
+    //se muestran las estadísticas del personaje
     public void mostrarEstadisticas() {
         System.out.println("[" + nombre + "] Fuerza: " + fuerza
                 + " | Velocidad: " + velocidad
@@ -98,6 +102,7 @@ class SuperHero extends Personaje {
         atacar(oponente, MULTIPLICADOR_ESPECIAL);
     }
 
+    //se aumenta las estadísticas del héroe en 5 puntos de fuerza y velocidad
     public void aumentarPoderes() {
         fuerza += BONO_PODER;
         velocidad += BONO_PODER;
@@ -115,6 +120,7 @@ class Villano extends Personaje {
         super(nombre, fuerza, velocidad, vidaHp);
     }
 
+    //el villano decide q hacer basado en una probabilidad
     public boolean decidir(int probabilidad) {
         return RANDOM.nextInt(PORCENTAJE_TOTAL) < probabilidad;
     }
@@ -196,17 +202,22 @@ public class App {
             mostrarMenu(heroe);
             turnoUsado = true;
             switch (leerOpcion()) {
-                case OPCION_ATACAR -> heroe.atacar(villano);
-                case OPCION_ESPECIAL -> heroe.ataqueEspecial(villano);
-                case OPCION_DEFENDER -> heroe.defender();
-                case OPCION_AUMENTAR -> heroe.aumentarPoderes();
-                case OPCION_RECUPERAR -> heroe.recuperarse();
-                case OPCION_ESTADISTICAS -> {
+                case OPCION_ATACAR: heroe.atacar(villano);
+                    break;
+                case OPCION_ESPECIAL: heroe.ataqueEspecial(villano);
+                    break;
+                case OPCION_DEFENDER: heroe.defender();
+                    break;
+                case OPCION_AUMENTAR: heroe.aumentarPoderes();
+                    break;
+                case OPCION_RECUPERAR: heroe.recuperarse();
+                    break;
+                case OPCION_ESTADISTICAS: {
                     heroe.mostrarEstadisticas();
                     villano.mostrarEstadisticas();
                     turnoUsado = false; // Ver estadísticas no consume el turno
                 }
-                default -> {
+                default: {
                     System.out.println("Opción no válida, intenta de nuevo.");
                     turnoUsado = false;
                 }
