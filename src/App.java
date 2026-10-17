@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-// Clase base del personaje
+// estadisticas base del personaje
 abstract class Personaje {
     private static final int PORCENTAJE_TOTAL = 100;
     private static final int PORCENTAJE_PROTEGIDO = 50;
@@ -147,7 +147,7 @@ public class App {
     private static final int OPCION_INVALIDA = -1;
 
     // Configuración de los personajes
-    private static final String NOMBRE_HEROE = "Capitán Java";
+    private static final String NOMBRE_HEROE = "Oracle Man";
     private static final int FUERZA_HEROE = 20;
     private static final int VELOCIDAD_HEROE = 15;
     private static final int VIDA_HEROE = 100;
