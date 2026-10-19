@@ -11,7 +11,7 @@ abstract class Personaje {
 
     private final String nombre;
     private final int vidaMaxima;
-    private int vidaHp;
+    private int vidaHp; //vida tripe hijueputa "experiencia propia"
     private boolean defendiendo;
     protected int fuerza;
     protected int velocidad;
@@ -45,6 +45,7 @@ abstract class Personaje {
         return vidaHp > VIDA_MINIMA;
     }
 
+    //gaby
     // Ataque normal
     public void atacar(Personaje oponente) {
         atacar(oponente, MULTIPLICADOR_NORMAL);
@@ -125,6 +126,8 @@ class Villano extends Personaje {
         return RANDOM.nextInt(PORCENTAJE_TOTAL) < probabilidad;
     }
 
+    //juan
+    //el villano puede hacer trampa y duplicar su ataque
     @Override
     public void atacar(Personaje oponente) {
         if (decidir(PROBABILIDAD_TRAMPA)) {
@@ -196,6 +199,7 @@ public class App {
         SCANNER.close();
     }
 
+    //gaby
     private static void turnoHeroe(SuperHero heroe, Villano villano) {
         boolean turnoUsado = false;
         while (!turnoUsado) {
@@ -225,6 +229,7 @@ public class App {
         }
     }
 
+    // El villano decide su acción basada en su vida y probabilidades
     private static void turnoVillano(Villano villano, SuperHero heroe) {
         System.out.println("\n--- Turno de " + villano.getNombre() + " ---");
         boolean vidaBaja = villano.getVidaHp() * PORCENTAJE_TOTAL / villano.getVidaMaxima() < UMBRAL_VIDA_BAJA;
@@ -238,6 +243,7 @@ public class App {
         }
     }
 
+    //se muestra el menú de opciones para el héroe
     private static void mostrarMenu(SuperHero heroe) {
         System.out.println("\n--- Turno de " + heroe.getNombre() + " ---");
         System.out.println(OPCION_ATACAR + ". Atacar");
